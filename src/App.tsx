@@ -1,11 +1,13 @@
 import React from 'react';
 import Accordian from './components/accordian/index'
+import RandomColor from './components/random-color';
 
 function App() {
   return (
-    <div className='app'>
-      <Accordian />
-    </div>
+    <>
+      {/* <Accordian /> */}
+      <RandomColor />
+    </>
   )
 }
 
