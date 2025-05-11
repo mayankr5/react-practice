@@ -1,0 +1,26 @@
+.star-container {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin-top: 1em;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #00000088;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+.active {
+    color: rgb(202, 170, 25);
+}
+
+.inactive {
+    color: black;
+}
