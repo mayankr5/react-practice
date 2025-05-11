@@ -1,4 +1,4 @@
-.star-container {
+/* .star-container {
     display: flex;
     flex-direction: row;
 }
@@ -23,4 +23,51 @@ button {
 
 .inactive {
     color: black;
-}
+} */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .star-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .star-container svg {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .star-container svg:hover {
+    transform: scale(1.2);
+  }
+  
+  .active {
+    color: #f7c948; /* gold */
+  }
+  
+  .inactive {
+    color: #e4e5e9; /* light gray */
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
