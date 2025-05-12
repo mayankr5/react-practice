@@ -1,0 +1,75 @@
+/* Container styling */
+.load-more-container {
+    all:unset;
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Product grid */
+  .products-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Individual product card */
+  .product {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #fafafa;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Product image */
+  .product img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Product title */
+  .product p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    margin-bottom: 1rem;
+  }
+  
+  /* Load More button */
+  button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+  
