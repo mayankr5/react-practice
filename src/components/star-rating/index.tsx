@@ -25,7 +25,7 @@ const StarRating: React.FC = () => {
 
     return (
         <div className="container">
-            <div className="star-container">
+            <div className="star-wrapper">
                 {[...Array(5)].map((_, i) => {
                     const index = i + 1;
                     return (
