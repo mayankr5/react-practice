@@ -1,0 +1,56 @@
+/* Container for the entire tree view */
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #fafafa;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Styling for the entire unordered list */
+  .menu-list-container {
+    list-style-type: none;
+    padding-left: 20px;
+    margin: 0;
+  }
+  
+  /* List item container */
+  .menu-item-container {
+    margin: 6px 0;
+  }
+  
+  /* Main clickable label and toggle icon row */
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Hover effect */
+  .item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Label text */
+  .item p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  /* Toggle symbol (+/-) */
+  .item span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    user-select: none;
+    padding-left: 10px;
+  }
+  
