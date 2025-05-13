@@ -5,6 +5,7 @@ import StarRating from './components/star-rating';
 import ImageSlider from './components/image-slider';
 import LoadMore from './components/load-more';
 import TreeView from './components/tree-view';
+import QRCodeGenerator from './components/qr-code-generator';
 
 const imageSliderProps = {
   url: "https://picsum.photos/v2/list",
@@ -25,7 +26,8 @@ function App() {
       {/* <StarRating /> */}
       {/* <ImageSlider url={imageSliderProps.url} limit={imageSliderProps.limit} page={imageSliderProps.page}/> */}
       {/* <LoadMore url={loadMoreProps.url} limit={loadMoreProps.limit} /> */}
-      <TreeView />
+      {/* <TreeView /> */}
+      <QRCodeGenerator />
     </>
   )
 }
