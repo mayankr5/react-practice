@@ -13,9 +13,13 @@ const QRCodeGenerator = () => {
           type="text"
           className={styles.inputField}
           placeholder="Enter value..."
+          value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button className={styles.button} onClick={() => setQRCode(text)}>
+        <button className={styles.button} onClick={() => {
+          setQRCode(text)
+          setText('');
+          }}>
           Generate QR
         </button>
       </div>
