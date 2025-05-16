@@ -7,6 +7,7 @@ import LoadMore from './components/load-more';
 import TreeView from './components/tree-view';
 import QRCodeGenerator from './components/qr-code-generator';
 import ThemeChange from './components/theme-change';
+import ScrollIndicator from './components/scroll-indicator';
 
 const imageSliderProps = {
   url: "https://picsum.photos/v2/list",
@@ -29,7 +30,8 @@ function App() {
       {/* <LoadMore url={loadMoreProps.url} limit={loadMoreProps.limit} /> */}
       {/* <TreeView /> */}
       {/* <QRCodeGenerator /> */}
-      <ThemeChange />
+      {/* <ThemeChange /> */}
+      <ScrollIndicator url={'https://dummyjson.com/products?limit=100'} />
     </>
   )
 }
