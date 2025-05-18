@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Accordian from './components/accordian/index'
 import RandomColor from './components/random-color';
 import StarRating from './components/star-rating';
@@ -8,6 +8,7 @@ import TreeView from './components/tree-view';
 import QRCodeGenerator from './components/qr-code-generator';
 import ThemeChange from './components/theme-change';
 import ScrollIndicator from './components/scroll-indicator';
+import Modal from './components/modal-popup';
 
 const imageSliderProps = {
   url: "https://picsum.photos/v2/list",
@@ -20,7 +21,19 @@ const loadMoreProps = {
   limit: 20
 }
 
+
 function App() {
+  
+  const [showPopup, setShowPopup] = useState<boolean>(false);
+ 
+  const handlePopup = () => {
+    setShowPopup(!showPopup);
+  }
+
+  function onClose() {
+    setShowPopup(false);
+  }
+
   return (
     <>
       {/* <Accordian /> */}
@@ -31,7 +44,9 @@ function App() {
       {/* <TreeView /> */}
       {/* <QRCodeGenerator /> */}
       {/* <ThemeChange /> */}
-      <ScrollIndicator url={'https://dummyjson.com/products?limit=100'} />
+      {/* <ScrollIndicator url={'https://dummyjson.com/products?limit=100'} /> */}
+      <button onClick={handlePopup}>Toggle Popup Modal</button>
+      {showPopup && <Modal onClose={onClose}/> }
     </>
   )
 }
