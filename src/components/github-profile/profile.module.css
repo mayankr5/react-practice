@@ -11,7 +11,6 @@
   .searchInput {
     display: flex;
     gap: 1rem;
-    margin-bottom: 2rem;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -41,6 +40,7 @@
   }
   
   .profileWrapper {
+    margin-top: 2em;
     width: 100%;
     max-width: 40rem;
   }
@@ -50,7 +50,7 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    padding: 2rem;
+    padding: 2rem 4em;
     background-color: #ffffff;
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -106,5 +106,28 @@
   .error {
     display: flex;
     justify-content: center;
+  }
+  .suggestionsList {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-height: 10rem;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    position: absolute;
+  }
+  
+  .suggestionsList li {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .suggestionsList li:hover {
+    background-color: #f2f2f2;
   }
   

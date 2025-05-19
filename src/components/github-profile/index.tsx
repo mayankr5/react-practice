@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './profile.module.css';
 
 interface GithubUser {
@@ -17,8 +17,10 @@ const GithubProfile: React.FC = () => {
     const [user, setUser] = useState<GithubUser | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const [suggestions, setSuggestions] = useState<string[]>([]);
+    const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
 
-    const fetchUser = async () => {
+    const fetchUser = async (login?: string) => {
         if (!username.trim()) {
             setError("Please enter a valid username.");
             return;
@@ -26,18 +28,19 @@ const GithubProfile: React.FC = () => {
 
         try {
             setLoading(true);
-            setError(null);
-            setUser(null); // Clear previous user
+            const response = await fetch(`https://api.github.com/users/${login || username}`);
+            const userData = await response.json();
 
-            const response = await fetch(`https://api.github.com/users/${username}`);
-            if (!response.ok) {
-                throw new Error("User not found");
+            if (userData.message === "Not Found") {
+                setError("User not found");
+                setUser(null);
+            } else {
+                setUser(userData);
+                setError(null);
+                setUsername("");
+                setSuggestions([]);
+                setShowSuggestions(false);
             }
-
-            const userData: GithubUser = await response.json();
-            console.log(userData);
-            setUser(userData);
-            setUsername("");
         } catch (error: any) {
             setError(error.message || "Something went wrong");
         } finally {
@@ -45,16 +48,53 @@ const GithubProfile: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            if (username.length > 1) {
+                fetch(`https://api.github.com/search/users?q=${username}&per_page=5`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.items) {
+                            setSuggestions(data.items.map((item: any) => item.login));
+                            setShowSuggestions(true);
+                        }
+                    })
+                    .catch(() => setSuggestions([]));
+            } else {
+                setSuggestions([]);
+                setShowSuggestions(false);
+            }
+        }, 500);
+
+        return () => clearTimeout(timeoutId);
+    }, [username]);
+
+    const handleSuggestionClick = (login: string) => {
+        setUsername(login);
+        fetchUser(login);
+    };
+
     return (
         <div className={styles.container}>
-            <div className={styles.searchInput}>
-                <input
-                    type="text"
-                    value={username}
-                    placeholder="Enter GitHub username"
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <button onClick={fetchUser}>Search</button>
+            <div className={styles.inputWrapper}>
+                <div className={styles.searchInput}>
+                    <input
+                        type="text"
+                        value={username}
+                        placeholder="Enter GitHub username"
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <button onClick={() => fetchUser()}>Search</button>
+                </div>
+                {showSuggestions && suggestions.length > 0 && (
+                    <ul className={styles.suggestionsList}>
+                        {suggestions.map((sugg, index) => (
+                            <li key={index} onClick={() => handleSuggestionClick(sugg)}>
+                                {sugg}
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
 
             <div className={styles.profileWrapper}>
@@ -87,7 +127,7 @@ const GithubProfile: React.FC = () => {
                                 <p>{user.following}</p>
                             </div>
                         </div>
-                        <p><span>Joined Github: </span>{new Date(user.created_at).toLocaleString()}</p>
+                        <p><span>Joined Github: </span>{new Date(user.created_at).toLocaleDateString()}</p>
                         <a href={user.html_url} target="_blank" rel="noopener noreferrer">
                             <button>Visit GitHub</button>
                         </a>
