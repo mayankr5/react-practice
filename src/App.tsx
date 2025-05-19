@@ -9,6 +9,7 @@ import QRCodeGenerator from './components/qr-code-generator';
 import ThemeChange from './components/theme-change';
 import ScrollIndicator from './components/scroll-indicator';
 import Modal from './components/modal-popup';
+import GithubProfile from './components/github-profile';
 
 const imageSliderProps = {
   url: "https://picsum.photos/v2/list",
@@ -45,8 +46,10 @@ function App() {
       {/* <QRCodeGenerator /> */}
       {/* <ThemeChange /> */}
       {/* <ScrollIndicator url={'https://dummyjson.com/products?limit=100'} /> */}
-      <button onClick={handlePopup}>Toggle Popup Modal</button>
-      {showPopup && <Modal onClose={onClose}/> }
+      {/* <button onClick={handlePopup}>Toggle Popup Modal</button>
+      {showPopup && <Modal onClose={onClose}/> } */}
+
+      <GithubProfile />
     </>
   )
 }
