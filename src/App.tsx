@@ -10,6 +10,7 @@ import ThemeChange from './components/theme-change';
 import ScrollIndicator from './components/scroll-indicator';
 import Modal from './components/modal-popup';
 import GithubProfile from './components/github-profile';
+import TicTacToe from './components/tic-tac-toe';
 
 const imageSliderProps = {
   url: "https://picsum.photos/v2/list",
@@ -49,7 +50,8 @@ function App() {
       {/* <button onClick={handlePopup}>Toggle Popup Modal</button>
       {showPopup && <Modal onClose={onClose}/> } */}
 
-      <GithubProfile />
+      {/* <GithubProfile /> */}
+      <TicTacToe />
     </>
   )
 }
